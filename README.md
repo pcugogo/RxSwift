@@ -1,9 +1,9 @@
 # RxSwift
 
-##RxSwift = ReactiveX + Swift
+## RxSwift = ReactiveX + Swift
 반응형 프로그래밍을 할 수 있게 해주는 확장팩
 
-###ReactiveX가 사용하는 도구
+### ReactiveX가 사용하는 도구
 
 ***Observer Pattern***
 
@@ -26,7 +26,7 @@
 
 
 
-##Observable##
+## Observable
 
 
 ***Observables Sequences***
@@ -64,7 +64,7 @@ print("completed")
 >  completed
 
 
-##Subjects##
+## Subjects
 Rx 에서 Subject는 Observable 과 Observer 둘 다 될 수 있는 특별한 형태입니다. Subject는 Observables을 subscribe(구독) 할 수 있고 다시 emit(방출)할 수 도 있습니다. 혹은 새로운 Observable을 emit 할 수 있습니다.
 
 ***PublishSubject***
