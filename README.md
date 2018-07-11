@@ -91,11 +91,11 @@ Rx 에서 Subject는 Observable 과 Observer 둘 다 될 수 있는 특별한 �
 ***ReplaySubject***
 >ReplaySubject는 미리 정해진 사이즈 만큼 ***가장 최근***의 이벤트를 새로운 Subscriber에게 전달 합니다.
 >```
-var replaySubject = ReplaySubject<String>.create(bufferSize: 1)
-replaySubject.onNext("before subscribe first value")
-replaySubject.onNext("before subscribe second value")```
-
-이 부분에서 버퍼 사이즈가 1이기 때문에 가장 최근의 이벤트인 “before subscribe second value”를 새로운 구독자에게 전달합니다.
+>var replaySubject = ReplaySubject<String>.create(bufferSize: >1)
+>replaySubject.onNext("before subscribe first value")
+>replaySubject.onNext("before subscribe second value")```
+>
+>이 부분에서 버퍼 사이즈가 1이기 때문에 가장 최근의 이벤트인 “before subscribe second value”를 새로운 구독자에게 전달합니다.
 
 ***Variable***
 >Variable 은 BehaviorSubject의 Wrapper 함수입니다. BehaviorSubject처럼 작동하며 더 익숙한 이름으로 사용하기 위해 만들어 졌습니다. Variable은 Error 이벤트를 Emit 하지 않습니다. deinit에서 해제 되며 Completed이벤트를 Emit합니다.
