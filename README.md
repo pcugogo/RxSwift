@@ -51,7 +51,7 @@ print("completed")
 
 ***Disposing***
 >**3.** dispose하여 메모리를 해제시킨다
-```
+>```
 .disposed(by: disposeBag) or disposeBag = DisposeBag()
 ```
 
