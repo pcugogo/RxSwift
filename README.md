@@ -52,9 +52,9 @@ print("completed")
 ***Disposing***
 >**3.** dispose하여 메모리를 해제시킨다
 >```
-.disposed(by: disposeBag) or disposeBag = DisposeBag()
-```
-
+>.disposed(by: disposeBag) or disposeBag = DisposeBag()
+>```
+>
 >Observables의 사용이 끝나면 메모리를 해제해야 합니다. 그 때 사용할 수 있는것이 Dispose입니다. RxSwift에서는 DisposeBag을 사용하는데 DisposeBag instance의 deinit() 이 실행 될 때 모든 메모리를 해제합니다.
 
 ***출력***
