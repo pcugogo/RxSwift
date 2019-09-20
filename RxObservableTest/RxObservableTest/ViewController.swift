@@ -2,147 +2,158 @@
 //  ViewController.swift
 //  RxObservableTest
 //
-//  Created by ChanWook Park on 2018. 7. 7..
-//  Copyright © 2018년 Ios_Park. All rights reserved.
+//  Created by ChanWook Park on 20/09/2019.
+//  Copyright © 2019 Ios_Park. All rights reserved.
 //
 
 import UIKit
 import RxSwift
 import RxCocoa
 
-class ViewController: UIViewController {
+enum ObservableCreations: Int {
+    case just = 0
+    case from
+    case of
+    case empty
+    case never
+    case error
+    case create
+    case repeatElement
+    case interval
+}
 
+class ViewController: UIViewController {
+    
     var disposeBag:DisposeBag = DisposeBag()
+    var observableCreations = ["just(1)",".from([1,2,3,4,5])",".of(1,2,3,4,5)","empty()",".never()",".error(RxError.unknown)",".create .on(1)~.on(5)",".repeatElement(3)",".interval(0.5) take(20)"]
     
-    @IBOutlet weak var ATextField: UITextField!
-    @IBOutlet weak var BTextField: UITextField!
-    @IBOutlet weak var CTextField: UITextField!
     
-    @IBOutlet weak var resultLb: UILabel!
+    @IBOutlet weak var textView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bind()
-//        rxInit()
         
     }
+    
+    
     
 }
 
 extension ViewController {
-    
-    func rxInit(){
+    func observable(creations: ObservableCreations) {
         
-        let textToNumber:(String?) ->Observable<Int> = { text -> Observable<Int> in
-            
-            guard let text = text, let value = Int(text) else{
-                return Observable.empty()
-            }
-            return Observable.just(value)
-        }
-        
-        let aValueObservable = ATextField.rx.text.asObservable().flatMap(textToNumber)
-        let bValueObservable = BTextField.rx.text.asObservable().flatMap(textToNumber)
-        let cValueObservable = CTextField.rx.text.asObservable().flatMap(textToNumber)
-        
-//        ATextfield.rx.text.asObservable().flatMap(textToNumber)
-//        { text -> Observable<Int> in
-//            guard let text = text, let value = Int(text) else{
-//                return Observable.empty()
-//            }
-//            return Observable.just(value)
-//        }
-        
-        Observable.combineLatest([aValueObservable,bValueObservable,cValueObservable]) { (values) -> Int in
-            
-            return values.reduce(0, +)
-            }.map {("\($0)")}.subscribe { event in
-                switch event{
-                case .next(let value):
-                    self.resultLb.text = value
-                default:
-                    break
-                }
-        }.disposed(by: disposeBag)
-    }
-    
-    
-    
-    
-    func bind() {
-        
-        let subScriber: (Event<Int>) -> Void = { event in
+        //Subscribe 미리 지정
+        let subscribe: (Event<Int>) -> Void = {[weak self] (event: Event) in
+            guard let `self` = self else {return}
             switch event {
-            case let .next(element) : //let 밖에
+            case let .next(element):
+                self.textView.text = self.textView.text! + "\n\(element)"
                 print("\(element)")
-            case .error(let error):  //안에 써도 같은 의미 let error 옆에 ,쓰고 줄줄이 더 쓸 수 있다
+                self.textView.scrollRangeToVisible(NSRange(location: self.textView.text.count - 1, length: 0))
+            case let .error(error):
+                self.textView.text = self.textView.text! + "\n\(error.localizedDescription)"
                 print(error.localizedDescription)
             case .completed:
+                self.textView.text = self.textView.text! + "\n completed"
                 print("completed")
+                self.textView.scrollRangeToVisible(NSRange(location: self.textView.text.count - 1, length: 0))
             }
         }
-        //옵져버는 어떻게 관찰을 할까? 의 경우의 수 5개
-        //Operator
-        Observable<Int>.just(1).subscribe(subScriber).disposed(by: disposeBag)
         
-        Observable<Int>.from([1,2,3,4,5]).subscribe(subScriber).disposed(by: disposeBag)
-        
-        Observable<Int>.of(5,4,3,2,1).subscribe(subScriber).disposed(by: disposeBag)
-        
-        Observable<Int>.empty().subscribe(subScriber).disposed(by: disposeBag)
-        print("-")
-        
-        Observable<Int>.never().subscribe(subScriber).disposed(by: disposeBag)
-        print("_")
-        
-        Observable<Int>.error(RxError.unknown).subscribe(subScriber).disposed(by: disposeBag)
-        
-        //create로 Observable Sequence를 직접 만들 수 있다 /1. onNext로 올린 숫자들을 /2. subScribe(구독)의 형식으로 출력한다 /3. dispose하여 메모리를 해제시킨다
-        Observable<Int>.create { observer -> Disposable in
-            observer.on(Event.next(1))
-            observer.onNext(2) // 위 코드랑 같다
-            observer.onNext(4)
-            observer.onNext(8)
-            observer.onNext(16)
-            observer.onCompleted()
-            
-            return Disposables.create {
-                print("Dispose!!!")
-            }
-            }.subscribe({ event in
+        switch creations {
+        case .just:
+            //Observable 생성 - just: Element 1개를 Emit 한다.
+            Observable<Int>.just(1).subscribe {(event: Event) in //Subscribe 직접 생성
                 switch event {
-                case let .next(element) : //let 밖에
+                case let .next(element):
                     print("\(element)")
-                case .error(let error):  //안에 써도 같은 의미 let error 옆에 ,쓰고 줄줄이 더 쓸 수 있다
+                    self.textView.text = self.textView.text! + "\n\(element)"
+                    self.textView.scrollRangeToVisible(NSRange(location: self.textView.text.count - 1, length: 1))
+                case let .error(error):
+                    self.textView.text = self.textView.text! + "\n\(error.localizedDescription)"
                     print(error.localizedDescription)
                 case .completed:
+                    self.textView.text = self.textView.text! + "\n completed"
                     print("completed")
+                    self.textView.scrollRangeToVisible(NSRange(location: self.textView.text.count - 1, length: 1))
                 }
-            }).disposed(by: disposeBag) //이렇게 디스포즈(메모리 해제)해도 되고
-//        disposeBag = DisposeBag() //이렇게 디스포즈 해도 됨
-        
-        
-        Observable<Int>.repeatElement(1000).take(10).subscribe(subScriber).disposed(by: disposeBag)// take 쓰면 10번 디스포즈
-        
-//        Observable<Int>.interval(0.5, scheduler: MainScheduler.instance).take(20).subscribe(subScriber).disposed(by: disposeBag)
-        
-        
-        //퍼블리쉬 스크립트는 한몸
-        let publishSubject: PublishSubject<Int> = PublishSubject()
-        publishSubject.onNext(0)
-        publishSubject.onNext(2)
-        //위는 약속 전
-        publishSubject.subscribe(subScriber).disposed(by: disposeBag) //약속 시점
-        publishSubject.onNext(20)
-        publishSubject.onNext(22)
-        
-        //BehaviorSubject 초기값이 1개 있다 마지막 Event를 꺼내올 수 있다. SubScribe와 상관없이 데이터에 접근 해야할 경우 사용 - Datasource
-        let behaviorSubject :BehaviorSubject<Int> = BehaviorSubject(value: 200)
-        behaviorSubject.onNext(100) //여기서 초기값 200이 100으로 바뀜
-        behaviorSubject.subscribe(subScriber).disposed(by: disposeBag) // 여기서 바뀐 100으로 약속 약속을 여러번 할 수 있다
-        behaviorSubject.onNext(300)
-        behaviorSubject.onNext(400)
-        
+            }.dispose() // dispose() 즉시 처분 함수
+        //1과 completed emit한다.
+        case .from:
+            //Observable 생성 - from: Element를 Array로 보내고 하나씩 Emit한다
+            Observable.from([1,2,3,4,5]).subscribe(subscribe).disposed(by: disposeBag)
+        //1~5까지 각각 emit하고 completed
+        case .of:
+            //Observable 생성 - of: Emit할 Element 들을 함수 인자로 기입
+            Observable.of(1,2,3,4,5).subscribe(subscribe).disposed(by: disposeBag)
+        //1~5까지 각각 emit하고 completed
+        case .empty:
+            //Observable 생성 - empty: 아무 Element를 보내지 않음. complete는 보냄.
+            Observable<Int>.empty().subscribe(subscribe).disposed(by: disposeBag)
+        //completed
+        case .never:
+            //Observable 생성 - never: 아무 Event를 보내지 않음 (completed도 보내지않음)
+            Observable<Int>.never().subscribe(subscribe).disposed(by: disposeBag)
+        case .create:
+            //Observable 생성 - create: Observer에 직접 Event를 Emit한다.
+            Observable<Int>.create { (anyObserver: AnyObserver<Int>) -> Disposable in
+                anyObserver.on(Event.next(1))
+                anyObserver.on(Event.next(2))
+                anyObserver.on(Event.next(3))
+                anyObserver.on(Event.next(4))
+                anyObserver.on(Event.next(5))
+                anyObserver.on(Event.completed)
+                return Disposables.create {
+                    print("dispose")
+                }
+                }.subscribe(subscribe).disposed(by: disposeBag)
+        //1~5까지 각각 emit하고 completed
+        case .repeatElement:
+            //Observable 생성 - repeatElement: 지정된 element를 계속 Emit 한다.
+            Observable<Int>.repeatElement(3).take(10).subscribe(subscribe).disposed(by: disposeBag)
+        //3을 10회 emit하고 completed
+        case .interval:
+            //Observable 생성 - interval: 지정된 시간에 한번씩 event를 emit
+            Observable<Int>.interval(0.5, scheduler:
+                MainScheduler.instance).take(20).subscribe(subscribe).disposed(by: disposeBag)
+            //0부터 19까지 각각 emit하고 completed
+            
+        case .error:
+            //Observable 생성 - error: Error Event를 1개 Emit 한다.
+            Observable<Int>.error(RxError.unknown).subscribe(subscribe).disposed(by: disposeBag)
+            //=> The operation couldn’t be completed. (RxSwift.RxError error 1.)
+        }
     }
 }
+
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return observableCreations.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ObservableCreationCell", for: indexPath) as! ObservableCreationCell
+        cell.observableCreationsLb.text = observableCreations[indexPath.row]
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let observableCreations = ObservableCreations(rawValue: indexPath.row) else {return}
+        observable(creations: observableCreations)
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
