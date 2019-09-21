@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_RxObservableTestVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_RxObservableTestVersionString[];
+FOUNDATION_EXPORT double Pods_RxswiftBasicsPracticeVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_RxswiftBasicsPracticeVersionString[];
 

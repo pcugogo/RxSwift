@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  RxObservableTest
+//  RxswiftBasicsPractice
 //
-//  Created by ChanWook Park on 20/09/2019.
+//  Created by ChanWook Park on 21/09/2019.
 //  Copyright © 2019 Ios_Park. All rights reserved.
 //
 

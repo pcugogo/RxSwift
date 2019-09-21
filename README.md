@@ -73,6 +73,21 @@
 - subscribe가 발생하면, 발생한 시점 이전에 발생한 이벤트 중 가장 최신의 이벤트를 받는다. 주로 마지막 값을 받을 때 사용한다.
 
 ### ReplaySubject
+- 미리 정해진 사이즈(bufferSize) 만큼 이벤트를 저장해 새로운 Subscriber에게 전달 한다. 
+
+### Relay
+- Subject와 다르게 error 나 complete 를 통해서 완전종료될 수 없다
+- subscribe 하고 싶을 때는 asObservable을 사용한다.
+
+### Relay - PublishRelay
+- PublishSubject를 wrapping 해서 가지고 있다.
+- Subject 는 .completed 나 .error 를 받으면 subscribe 이 종료된다. 하지만 PublishRelay는 dispose되기 전까지 계속 작동하기 때문에 UI Event에서 사용하기 적절하다.
+
+### Relay - BehaviorRelay
+- BehaviorSubject를 wrapping 해서 가지고 있다.
+- .value를 사용해 현재의 값을 꺼낼 수 있다.
+- .value는 get only property이다.
+- value를 변경하기 위해 .accept()를 사용한다.
 
 ## Operator
 

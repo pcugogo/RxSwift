@@ -1,14 +1,13 @@
 //
-//  ViewController.swift
-//  RxObservableTest
+//  ObservableCreationsViewController.swift
+//  RxswiftBasicsPractice
 //
-//  Created by ChanWook Park on 20/09/2019.
+//  Created by ChanWook Park on 21/09/2019.
 //  Copyright © 2019 Ios_Park. All rights reserved.
 //
 
 import UIKit
 import RxSwift
-import RxCocoa
 
 enum ObservableCreations: Int {
     case just = 0
@@ -22,11 +21,10 @@ enum ObservableCreations: Int {
     case interval
 }
 
-class ViewController: UIViewController {
+class ObservableCreationsViewController: UIViewController {
     
     var disposeBag:DisposeBag = DisposeBag()
-    var observableCreations = ["just(1)",".from([1,2,3,4,5])",".of(1,2,3,4,5)","empty()",".never()",".error(RxError.unknown)",".create .on(1)~.on(5)",".repeatElement(3)",".interval(0.5) take(20)"]
-    
+    let observableCreationsToTextView = ["just(1)",".from([1,2,3,4,5])",".of(1,2,3,4,5)","empty()",".never()",".error(RxError.unknown)",".create .on(1)~.on(5)",".repeatElement(3).take(10)",".interval(0.5) take(20)"]
     
     @IBOutlet weak var textView: UITextView!
     
@@ -36,10 +34,9 @@ class ViewController: UIViewController {
     }
     
     
-    
 }
 
-extension ViewController {
+extension ObservableCreationsViewController {
     func observable(creations: ObservableCreations) {
         
         //Subscribe 미리 지정
@@ -77,7 +74,7 @@ extension ViewController {
                     print("completed")
                     self.textView.scrollRangeToVisible(NSRange(location: self.textView.text.count - 1, length: 1))
                 }
-            }.dispose() // dispose() 즉시 처분 함수
+                }.dispose() // dispose() 즉시 처분 함수
         //1과 completed emit한다.
         case .from:
             //Observable 생성 - from: Element를 Array로 보내고 하나씩 Emit한다
@@ -126,15 +123,15 @@ extension ViewController {
     }
 }
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
+extension ObservableCreationsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return observableCreations.count
+        return observableCreationsToTextView.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ObservableCreationCell", for: indexPath) as! ObservableCreationCell
-        cell.observableCreationsLb.text = observableCreations[indexPath.row]
+        cell.observableCreationsLb.text = observableCreationsToTextView[indexPath.row]
         return cell
     }
     
@@ -143,17 +140,3 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         observable(creations: observableCreations)
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
