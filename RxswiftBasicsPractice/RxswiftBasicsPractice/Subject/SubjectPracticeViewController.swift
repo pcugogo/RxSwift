@@ -32,7 +32,7 @@ extension SubjectPracticeViewController {
             switch event {
             case let .next(element): //let 밖에
                 print("\(element)")
-            case .error(let error):  //안에 써도 같은 의미 let error 옆에 ,쓰고 줄줄이 더 쓸 수 있다
+            case .error(let error):
                 print(error.localizedDescription)
             case .completed:
                 print("completed")

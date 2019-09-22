@@ -30,8 +30,11 @@
 
 - Subscribe: 구독
  - Observer는 Observable을 구독한다.
+ - Observable은 subscribe가 있기 전까지 아무 일도 하지 않는다. 
+ - 구독을 하면 Observable이 이벤트를 발생시키고 complete 또는 error 이벤트가 발생하기 전까지 계속 next 이벤트를 발생시킨다.
+ - disposable 객체를 반환한다.
 - Emit: 발행
- - Observable은 Event를 발행한다.
+ - Observable은 Event를 Emit(발행)한다.
 - Dispose: 처분
  - Observable은 Event발행이 Complete(완료)되면 Dispose된다.
 
@@ -42,11 +45,12 @@
 
 ## Dispose
 
-- 처분한다
+- 구독을 중단 한다.
+- 구독이 중단되면, Observable은 더 이상 이벤트를 발생시키지 않는다.
 - dispose() 함수: 즉시 처분
 - disposeBag: disposable 들을 모아놨다가 한번에 처분
 
-## Observable 생성 방법
+## Observable 생성
 
 - just: Element를 1개 Emit 한다.
 - from: Element를 Array로 보내고 하나씩 Emit한다.
@@ -89,7 +93,7 @@
 - .value는 get only property이다.
 - value를 변경하기 위해 .accept()를 사용한다.
 
-## Operator
+## 다양한 Operators
 
 ### Transforming - Map
 - 이벤트를 바꾼다.

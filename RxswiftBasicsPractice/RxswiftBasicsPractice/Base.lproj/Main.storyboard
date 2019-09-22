@@ -94,7 +94,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mql-tB-rLW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1042" y="728"/>
+            <point key="canvasLocation" x="609" y="19"/>
         </scene>
         <!--Relay View Controller-->
         <scene sceneID="tf3-Cl-2ME">
@@ -109,7 +109,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1TP-0T-e3c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-142" y="728"/>
+            <point key="canvasLocation" x="1507" y="19"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="b4u-6r-2Rc">
+            <objects>
+                <viewController id="EDI-wP-NfY" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Oz7-kU-CqA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Eik-UA-fXB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sRW-jE-RGr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-214" y="742"/>
         </scene>
         <!--Observable 생성 방법-->
         <scene sceneID="zeI-ms-fBQ">
@@ -181,7 +196,78 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Kb-pj-eBR" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-141" y="19"/>
+            <point key="canvasLocation" x="-214" y="19"/>
+        </scene>
+        <!--Plus Three Numbers View Controller-->
+        <scene sceneID="uSU-cs-1Z0">
+            <objects>
+                <viewController storyboardIdentifier="PlusThreeNumbersViewController" id="Ne8-X4-6D9" customClass="PlusThreeNumbersViewController" customModule="RxswiftBasicsPractice" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0FW-TQ-Obr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="결과" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4AY-LE-56C">
+                                <rect key="frame" x="0.0" y="746" width="414" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="kht-ts-W78"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="숫자를 입력 해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8ay-pi-vDw">
+                                <rect key="frame" x="0.0" y="88" width="414" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="KQV-AC-e9T"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="숫자를 입력 해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aPJ-ET-dxN">
+                                <rect key="frame" x="0.0" y="228" width="414" height="70"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="숫자를 입력 해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cDV-Gd-QcP">
+                                <rect key="frame" x="0.0" y="158" width="414" height="70"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="4AY-LE-56C" firstAttribute="leading" secondItem="0FW-TQ-Obr" secondAttribute="leading" id="685-a5-bb2"/>
+                            <constraint firstItem="aPJ-ET-dxN" firstAttribute="top" secondItem="cDV-Gd-QcP" secondAttribute="bottom" id="7o2-67-H2E"/>
+                            <constraint firstItem="aPJ-ET-dxN" firstAttribute="leading" secondItem="itk-R1-Gzv" secondAttribute="leading" id="KHf-gP-u4h"/>
+                            <constraint firstItem="itk-R1-Gzv" firstAttribute="trailing" secondItem="aPJ-ET-dxN" secondAttribute="trailing" id="Ldq-jg-6Je"/>
+                            <constraint firstItem="aPJ-ET-dxN" firstAttribute="height" secondItem="cDV-Gd-QcP" secondAttribute="height" id="MLB-Fl-KsR"/>
+                            <constraint firstItem="itk-R1-Gzv" firstAttribute="trailing" secondItem="cDV-Gd-QcP" secondAttribute="trailing" id="PJ1-et-EI7"/>
+                            <constraint firstAttribute="bottom" secondItem="4AY-LE-56C" secondAttribute="bottom" id="S1e-Ps-Uvj"/>
+                            <constraint firstItem="itk-R1-Gzv" firstAttribute="trailing" secondItem="8ay-pi-vDw" secondAttribute="trailing" id="efA-oD-cZe"/>
+                            <constraint firstItem="cDV-Gd-QcP" firstAttribute="leading" secondItem="itk-R1-Gzv" secondAttribute="leading" id="eq7-hB-hGy"/>
+                            <constraint firstAttribute="trailing" secondItem="4AY-LE-56C" secondAttribute="trailing" id="gcu-bW-uPt"/>
+                            <constraint firstItem="cDV-Gd-QcP" firstAttribute="top" secondItem="8ay-pi-vDw" secondAttribute="bottom" id="hsh-I8-G9k"/>
+                            <constraint firstItem="8ay-pi-vDw" firstAttribute="leading" secondItem="itk-R1-Gzv" secondAttribute="leading" id="nlt-qq-4Qt"/>
+                            <constraint firstItem="cDV-Gd-QcP" firstAttribute="width" secondItem="8ay-pi-vDw" secondAttribute="width" id="uIv-1p-CaK"/>
+                            <constraint firstItem="8ay-pi-vDw" firstAttribute="top" secondItem="itk-R1-Gzv" secondAttribute="top" id="vpf-Nh-y2W"/>
+                            <constraint firstItem="cDV-Gd-QcP" firstAttribute="height" secondItem="8ay-pi-vDw" secondAttribute="height" id="zY8-de-zX1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="itk-R1-Gzv"/>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="firstNumberTextField" destination="8ay-pi-vDw" id="fn9-Nf-ZdU"/>
+                        <outlet property="resultLb" destination="4AY-LE-56C" id="NB1-Dy-uBi"/>
+                        <outlet property="secondNumberTextField" destination="cDV-Gd-QcP" id="9Ma-3t-YsJ"/>
+                        <outlet property="thirdNumberTextField" destination="aPJ-ET-dxN" id="SkV-VZ-KJx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RIH-rp-s8X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1042" y="742"/>
         </scene>
     </scenes>
 </document>

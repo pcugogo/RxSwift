@@ -12,11 +12,12 @@ enum nextViews: Int {
     case observableCreations = 0
     case subjectPratice
     case relay
+    case plusThreeNumbersViewController
 }
 
 class StartViewController: UIViewController {
 
-    let tableOfContents = ["ObservableCreations", "Subject", "Relay"]
+    let tableOfContents = ["ObservableCreations", "Subject", "Relay", "PlusThreeNumbers"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +50,10 @@ extension StartViewController: UITableViewDelegate, UITableViewDataSource {
             if let storyboard = self.storyboard, let relayViewController = storyboard.instantiateViewController(withIdentifier: "RelayViewController") as? RelayViewController {
                 self.navigationController?.pushViewController(relayViewController, animated: true)
             }
-            
+        case nextViews.plusThreeNumbersViewController.rawValue:
+            if let storyboard = self.storyboard, let plusThreeNumbersViewController = storyboard.instantiateViewController(withIdentifier: "PlusThreeNumbersViewController") as? PlusThreeNumbersViewController {
+                self.navigationController?.pushViewController(plusThreeNumbersViewController, animated: true)
+            }
         default:
             break
         }
