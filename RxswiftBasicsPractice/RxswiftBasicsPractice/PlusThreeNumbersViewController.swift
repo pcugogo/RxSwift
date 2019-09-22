@@ -27,16 +27,16 @@ class PlusThreeNumbersViewController: UIViewController {
 
 extension PlusThreeNumbersViewController {
     func bind() {
-        let textToNumber: (String?) -> Observable<Int> = { text -> Observable<Int> in
-            guard let text = text, let value = Int(text) else {
+        let textToNumber: (String) -> Observable<Int> = { text -> Observable<Int> in
+            guard let number = Int(text) else {
                 return Observable.empty()
             }
-            return Observable.just(value)
+            return Observable.just(number)
         }
         
-        let firstNumber = firstNumberTextField.rx.text.flatMap(textToNumber)
-        let secondNumber = secondNumberTextField.rx.text.flatMap(textToNumber)
-        let thirdNumber = thirdNumberTextField.rx.text.flatMap(textToNumber)
+        let firstNumber = firstNumberTextField.rx.text.orEmpty.flatMap(textToNumber)
+        let secondNumber = secondNumberTextField.rx.text.orEmpty.flatMap(textToNumber)
+        let thirdNumber = thirdNumberTextField.rx.text.orEmpty.flatMap(textToNumber)
         
         Observable.combineLatest([firstNumber, secondNumber, thirdNumber]) { numbers -> Int in
             return numbers.reduce(0, +)
@@ -47,7 +47,6 @@ extension PlusThreeNumbersViewController {
                 default :
                     break
                 }
-            }.disposed(by: disposeBag)
-        
+        }.disposed(by: disposeBag)
     }
 }

@@ -111,16 +111,49 @@
             </objects>
             <point key="canvasLocation" x="1507" y="19"/>
         </scene>
-        <!--View Controller-->
+        <!--Multiplication Table View Controller-->
         <scene sceneID="b4u-6r-2Rc">
             <objects>
-                <viewController id="EDI-wP-NfY" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MultiplicationTableViewController" id="EDI-wP-NfY" customClass="MultiplicationTableViewController" customModule="RxswiftBasicsPractice" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Oz7-kU-CqA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lem-02-o2B">
+                                <rect key="frame" x="0.0" y="88" width="414" height="50"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="숫자를 입력 해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UyD-df-W7j">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="byI-38-z67"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8kA-Hw-wB3">
+                                        <rect key="frame" x="0.0" y="50" width="414" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Eik-UA-fXB" firstAttribute="trailing" secondItem="lem-02-o2B" secondAttribute="trailing" id="Ggn-PF-Bro"/>
+                            <constraint firstItem="lem-02-o2B" firstAttribute="leading" secondItem="Eik-UA-fXB" secondAttribute="leading" id="oX9-gF-7jr"/>
+                            <constraint firstItem="Eik-UA-fXB" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="lem-02-o2B" secondAttribute="bottom" constant="10" id="yC4-HC-LMl"/>
+                            <constraint firstItem="lem-02-o2B" firstAttribute="top" secondItem="Eik-UA-fXB" secondAttribute="top" id="zyb-xC-0Ny"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Eik-UA-fXB"/>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="numberInputTextField" destination="UyD-df-W7j" id="aPn-aY-f3a"/>
+                        <outlet property="resultLb" destination="8kA-Hw-wB3" id="3JQ-PO-qfz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sRW-jE-RGr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

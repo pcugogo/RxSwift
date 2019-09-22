@@ -20,8 +20,8 @@
 - 인자로 보낼 수 있다.
 - 값으로 반환할 수 있다.
 - 변수에 저장할 수 있다.
-# Rxswift
 
+# Rxswift
 - Reaction - Action: Reaction을 하기 위해서는 Action을 관찰해야한다.
 - Observer: 관찰하는 주체
 - Observable: 관찰되는 대상
@@ -95,7 +95,7 @@
 
 ## 다양한 Operators
 
-### Transforming - Map
+### Transforming - map
 - 이벤트를 바꾼다.
 
 ### Transforming - flatMap
@@ -120,6 +120,9 @@ Observable.from([0, 0, 1, 1, 2]).distinctUntilChanged()
 ```
 
 - 첫번째 이벤트 0을 발생시키고 첫번째 값과 같은 값 0을 가진 두번째 이벤트 발생하지않고 세번째 이벤트는 새로운 숫자 1로 변경되었기때문에 발생한다.
+
+### Mathematical and Aggregate - Reduce
+- 이벤트들을 모두 합쳐서 방출한다.
 
 ### Combination-merge
 - 이벤트 타입이 같은 옵저버블 여러개를 합친다.
