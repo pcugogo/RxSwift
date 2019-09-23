@@ -25,9 +25,13 @@ class MultiplicationTableViewController: UIViewController {
 
 extension MultiplicationTableViewController {
     func bind() {
-        let textToNumber: (String) -> Observable<Int> = { text -> Observable<Int> in
-            guard let number = Int(text) else {
+        let textToNumber: (String) -> Observable<Int> = {[weak self] text -> Observable<Int> in
+            guard let number = Int(text), let self = self else {
                 return Observable.empty()
+            }
+            if number > 9 {
+                self.numberInputTextField.text = "9"
+                return Observable.just(9)
             }
             return Observable.just(number)
         }

@@ -40,10 +40,13 @@ extension PlusThreeNumbersViewController {
         
         Observable.combineLatest([firstNumber, secondNumber, thirdNumber]) { numbers -> Int in
             return numbers.reduce(0, +)
-            }.map{String($0)}.subscribe { event in
+            }.map{String($0)}.subscribe {[weak self] event in
+                guard let self = self else {return}
                 switch event {
                 case .next(let value):
                     self.resultLb.text = value
+                case .completed:
+                    print("complete")
                 default :
                     break
                 }

@@ -19,6 +19,8 @@
 		FC9189962335E56B004D9833 /* RelayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9189952335E56B004D9833 /* RelayViewController.swift */; };
 		FC91899823371CD5004D9833 /* PlusThreeNumbersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC91899723371CD5004D9833 /* PlusThreeNumbersViewController.swift */; };
 		FC91899A23373172004D9833 /* MultiplicationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC91899923373172004D9833 /* MultiplicationTableViewController.swift */; };
+		FC9189AD2338908C004D9833 /* MultiplicationTable2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9189AC2338908B004D9833 /* MultiplicationTable2ViewController.swift */; };
+		FC9189B12338CA84004D9833 /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9189B02338CA84004D9833 /* AnimationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		FC9189952335E56B004D9833 /* RelayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelayViewController.swift; sourceTree = "<group>"; };
 		FC91899723371CD5004D9833 /* PlusThreeNumbersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusThreeNumbersViewController.swift; sourceTree = "<group>"; };
 		FC91899923373172004D9833 /* MultiplicationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplicationTableViewController.swift; sourceTree = "<group>"; };
+		FC9189AC2338908B004D9833 /* MultiplicationTable2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplicationTable2ViewController.swift; sourceTree = "<group>"; };
+		FC9189B02338CA84004D9833 /* AnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,8 @@
 				FC9189942335E549004D9833 /* Relay */,
 				FC91899723371CD5004D9833 /* PlusThreeNumbersViewController.swift */,
 				FC91899923373172004D9833 /* MultiplicationTableViewController.swift */,
+				FC9189AC2338908B004D9833 /* MultiplicationTable2ViewController.swift */,
+				FC9189B02338CA84004D9833 /* AnimationViewController.swift */,
 				FC91897B2335B879004D9833 /* Main.storyboard */,
 				FC91897E2335B87B004D9833 /* Assets.xcassets */,
 				FC9189802335B87B004D9833 /* LaunchScreen.storyboard */,
@@ -246,12 +252,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC9189AD2338908C004D9833 /* MultiplicationTable2ViewController.swift in Sources */,
 				FC9189962335E56B004D9833 /* RelayViewController.swift in Sources */,
 				FC9189932335BF80004D9833 /* StartViewController.swift in Sources */,
 				FC9189912335BB14004D9833 /* SubjectPracticeViewController.swift in Sources */,
 				FC91898B2335B8DE004D9833 /* ObservableCreationsViewController.swift in Sources */,
 				FC91898D2335B8F0004D9833 /* ObservableCreationCell.swift in Sources */,
 				FC91899823371CD5004D9833 /* PlusThreeNumbersViewController.swift in Sources */,
+				FC9189B12338CA84004D9833 /* AnimationViewController.swift in Sources */,
 				FC9189782335B879004D9833 /* AppDelegate.swift in Sources */,
 				FC91899A23373172004D9833 /* MultiplicationTableViewController.swift in Sources */,
 			);

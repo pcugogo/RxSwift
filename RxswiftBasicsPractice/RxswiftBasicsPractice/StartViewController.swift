@@ -14,11 +14,13 @@ enum nextViews: Int {
     case relay
     case plusThreeNumbersViewController
     case multiplicationTableViewController
+    case mutiplicationTable2ViewController
+    case animationViewController
 }
 
 class StartViewController: UIViewController {
 
-    let tableOfContents = ["ObservableCreations", "Subject", "Relay", "PlusThreeNumbers", "Multiplication"]
+    let tableOfContents = ["ObservableCreations", "Subject", "Relay", "PlusThreeNumbers", "Multiplication", "Mutiplication2", "AnimationView"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +60,14 @@ extension StartViewController: UITableViewDelegate, UITableViewDataSource {
         case nextViews.multiplicationTableViewController.rawValue:
             if let storyboard = self.storyboard, let multiplicationTableViewController = storyboard.instantiateViewController(withIdentifier: "MultiplicationTableViewController") as? MultiplicationTableViewController {
                 self.navigationController?.pushViewController(multiplicationTableViewController, animated: true)
+            }
+        case nextViews.mutiplicationTable2ViewController.rawValue:
+            if let storyboard = self.storyboard, let multiplicationTable2ViewController = storyboard.instantiateViewController(withIdentifier: "MultiplicationTable2ViewController") as? MultiplicationTable2ViewController {
+                self.navigationController?.pushViewController(multiplicationTable2ViewController, animated: true)
+            }
+        case nextViews.animationViewController.rawValue:
+            if let storyboard = self.storyboard, let animationViewController = storyboard.instantiateViewController(withIdentifier: "AnimationViewController") as? AnimationViewController {
+                self.navigationController?.pushViewController(animationViewController, animated: true)
             }
         default:
             break

@@ -42,6 +42,9 @@
 
 - Obsevable은 Event를 Emit 한다.
 - Observer는 Observable로 부터 Event를 Subscribe 한다.
+- error 또는 completed 되면 스트림이 종료 되면서 메모리가 해제된다.
+- error나 completed하지 않고 스트림이 종료되지 않는 상태로 뷰 전환을 하게 된다면 self의 강한참조로 인해 메모리릭 상태가 될 수 있기때문에 주의해야한다.
+참고 사이트: [곰튀김님 강의](https://www.youtube.com/watch?v=687KaKJ8B7U)
 
 ## Dispose
 
@@ -133,4 +136,11 @@ Observable.from([0, 0, 1, 1, 2]).distinctUntilChanged()
 ### Combination-combineLatest
 - 여러 옵저버블에서 가장 최근 이벤트들을 합친다.
 
+### Combination-withLatestFrom
+```
+secondNumberObservable.withLatestFrom(firstNumberObservable) { (second, first) -> Int in
+    return second * first 
+}
+```
+secondNumber의 이벤트가 emit 될 때마다 매개 변수로 넘겨준 firstNumberObservable의 최신 element를 얻는다.
 
