@@ -2,6 +2,11 @@
 
 ### RxSwift 이론을 학습하며 기능들을 사용해보고 간단한 미니프로젝트를 만들 계획입니다.
 
+## ReactiveX
+An API for asynchronous programming
+with observable streams
+옵져버블을 가지고 async 프로그래밍을 하는 api다
+
 ## RxSwift = ReactiveX + Swift
 반응형 프로그래밍을 할 수 있게 해주는 확장팩
 
@@ -37,6 +42,10 @@
  - Observable은 Event를 Emit(발행)한다.
 - Dispose: 처분
  - Observable은 Event발행이 Complete(완료)되면 Dispose된다.
+
+## Bind
+
+- 바인더를 메인스레드에서 실행해주기때문에 메인스레드 처리를 따로 처리할 필요가 없다.
 
 ## Event
 
@@ -143,4 +152,8 @@ secondNumberObservable.withLatestFrom(firstNumberObservable) { (second, first) -
 }
 ```
 secondNumber의 이벤트가 emit 될 때마다 매개 변수로 넘겨준 firstNumberObservable의 최신 element를 얻는다.
+
+### Observable share
+
+- 옵저버블을 공유하지 않으면 Subscribe 횟수만큼 이벤트가 발생 한다.
 

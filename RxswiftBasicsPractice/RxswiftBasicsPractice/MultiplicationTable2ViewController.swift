@@ -36,7 +36,7 @@ class MultiplicationTable2ViewController: UIViewController {
         let firstNumberObservable = numberObservable.enumerated().filter { (index, element) -> Bool in
             return index % 2 == 0
             }.map { (_, number) in return number}
-   
+
         let secondNumberObservable = numberObservable.enumerated().filter { (index, element) -> Bool in
             return index % 2 == 1
         }.map { (_, number) in return number}
