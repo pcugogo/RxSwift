@@ -1,7 +1,5 @@
 # RxSwift를 정리하고 학습 하는 공간
 
-### RxSwift 이론을 학습하며 기능들을 사용해보고 간단한 미니프로젝트를 만들 계획입니다.
-
 ## ReactiveX
 An API for asynchronous programming
 with observable streams
